@@ -115,6 +115,68 @@ Use the 'ls' command to display hidden files
 Use the command 'mget *' to download all the files we found
 <img width="649" height="338" alt="image" src="https://github.com/user-attachments/assets/151308c6-bc8f-4fb0-aa34-06d27089a3a7" />
 
+The Leave_me_alone.png contains errors and cannot be opened
+<img width="441" height="154" alt="image" src="https://github.com/user-attachments/assets/2119472e-5fad-4b2d-b132-4d6b2a252439" />
+
+So I exited ftp mode and used the command 'hexeditor' to see the errors.
+<img width="1112" height="625" alt="image" src="https://github.com/user-attachments/assets/bce180cf-b839-4a35-a72e-31b5558c53ae" />
+
+Changed the png header according to the right one
+<img width="985" height="546" alt="image" src="https://github.com/user-attachments/assets/964e563f-4bff-426b-86b5-3c385e232d27" />
+<img width="783" height="289" alt="image" src="https://github.com/user-attachments/assets/8512e048-24c5-43c1-895f-36bb17aae64e" />
+> Image source: https://en.wikipedia.org/wiki/PNG
+
+Once the Leave_me_alone.png is opened, we get the password for steghide: password (😂).The password is for steghide because steghide can be used for jpgs
+```bash
+steghide extract -sf aa.jpg
+```
+<img width="841" height="510" alt="image" src="https://github.com/user-attachments/assets/c9f56c96-a640-498f-a0da-5c222095d633" />
+
+Upon using the password, we extracted an 'ss.zip' file. After unzipping, we get a 'passwd.txt' file and a 'shado' file.
+<img width="278" height="82" alt="image" src="https://github.com/user-attachments/assets/1c2da41a-d856-4cf6-b9be-c87aea0cad85" />
+<img width="210" height="95" alt="image" src="https://github.com/user-attachments/assets/e58af727-89a1-4b1b-b944-d614f70241a5" />
+
+Now using the 'cat' command on the 'shado' file to display the entire content of the file. We get the password for an SSH file: M3tahuman
+```bash
+cat shado
+```
+<img width="201" height="59" alt="image" src="https://github.com/user-attachments/assets/ffea9f1e-3b15-4108-8e84-9826ee4e9aac" />
+
+We can now log in for the user slade's SSH file.
+```bash
+ssh slade@10.48.137.168
+```
+<img width="655" height="580" alt="image" src="https://github.com/user-attachments/assets/eca437f1-2a67-46eb-b6d8-495129377693" />
+
+Use the command 'ls' to display all files contained...and we get a 'user.txt' file. Use the command 'cat user.txt' to display the contents. 
+We can see the message 'THM{P30P7E_K33P_53CRET5__C0MPUT3R5_D0N'T}'
+<img width="340" height="95" alt="image" src="https://github.com/user-attachments/assets/e8ef540c-2b85-47c3-b68e-48942b73fee5" />
+
+Use the command ' sudo pkexec su' to access root privileges
+```bash
+sudo pkexec su
+```
+<img width="250" height="40" alt="image" src="https://github.com/user-attachments/assets/600e4e47-ca8e-4322-a84f-2d3e8209fd54" />
+
+Navigate to the root directory and use the command 'ls' to display all the files...we get a 'root.txt' file. 
+<img width="214" height="49" alt="image" src="https://github.com/user-attachments/assets/872e3436-1d61-4beb-8dfb-e3acaed43319" />
+
+Use the command 'cat root.txt' to display the contents...and we get a 'Mission Accomplished' message!!!
+<img width="744" height="255" alt="image" src="https://github.com/user-attachments/assets/82729273-8026-4e8a-b8df-b2f70670fe16" />
+
+I completed this room with the help of this YouTube video: https://youtu.be/_K6P8lJA-io?si=l-DsKIGYOJ8vZwqi
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
