@@ -1,6 +1,7 @@
 # THMLianYu
 
 ## Overview
+This is the work of Huwaina Yasmin binti Anuar Asfandi, student ID: 52215124317, class: Vulnerability Analysis: L01-B02
 This lab focuses on reconnaissance, enumeration, and exploitation of a vulnerable machine hosted on TryHackMe. The objective is to identify hidden directories, extract credentials, and escalate privileges to obtain user and capture flags (proof of access).
 
 ---
@@ -164,7 +165,7 @@ Navigate to the root directory and use the command 'ls' to display all the files
 Use the command 'cat root.txt' to display the contents...and we get a 'Mission Accomplished' message!!!
 <img width="744" height="255" alt="image" src="https://github.com/user-attachments/assets/82729273-8026-4e8a-b8df-b2f70670fe16" />
 
-I completed this room with the help of this YouTube video: https://youtu.be/_K6P8lJA-io?si=l-DsKIGYOJ8vZwqi
+> I completed this room with the help of this YouTube video: https://youtu.be/_K6P8lJA-io?si=l-DsKIGYOJ8vZwqi
 
 
 
