@@ -43,17 +43,21 @@ gobuster dir -u http://10.49.170.154 -w /usr/share/wordlists/dirbuster/directory
 Found directory: /island
 <img width="948" height="518" alt="image" src="https://github.com/user-attachments/assets/818f8305-99c5-460d-a728-feda7fa87616" />
 
+
 Visit 
 ```bash
 http://10.49.165.124/island/
 ```
 <img width="899" height="734" alt="image" src="https://github.com/user-attachments/assets/49641db9-5544-438e-afe7-e2a08e0284f8" />
 
+
 View the page source for more hints
 <img width="886" height="479" alt="image" src="https://github.com/user-attachments/assets/e71e54ba-de98-47e0-8b01-836e9d532ab0" />
 
+
 Found the code word 'vigilante' (FTP username).
 <img width="623" height="56" alt="image" src="https://github.com/user-attachments/assets/03eecbdb-0b9c-41be-917c-ccc17d1233b6" />
+
 
 Dig deeper into /island by running gobuster on /island
 ```bash
@@ -78,6 +82,7 @@ gobuster dir -u http://10.49.165.124/island/2100/ -w /usr/share/wordlists/dirbus
 Found directory: green_arrow.ticket
 <img width="932" height="543" alt="image" src="https://github.com/user-attachments/assets/5e1ce35d-5e13-4a61-995a-5578b94874ab" />
 
+## Step 3: File Discovery
 Visit
 ```bash
 http://10.49.170.154/island/2100/green_arrow.ticket
@@ -85,10 +90,39 @@ http://10.49.170.154/island/2100/green_arrow.ticket
 Found a token 'RTy8yhBQdscX'.
 <img width="716" height="267" alt="image" src="https://github.com/user-attachments/assets/cc6f4d5c-bf25-4028-a922-d54769347aaa" />
 
+## Step 4: Credential Extraction
 Visit CyberChef to decode the token
 ```bash
 https://gchq.github.io/CyberChef/
 ```
+Use Code58 to decrypt the token and get '!#th3h00d' which is the FTP password
+<img width="1919" height="871" alt="image" src="https://github.com/user-attachments/assets/5444c5fd-2a75-4353-82f0-25bb97513607" />
+
+
+> [!NOTE]
+> From this point on, the IP address has changed because I used a vpn in my Kali Linux instead of the AttackBox in TryHackMe
+
+## Step 5: FTP Access
+Log in through ftp using the username and password found earlier
+```bash
+ftp 10.48.137.168
+```
+<img width="335" height="197" alt="image" src="https://github.com/user-attachments/assets/a83656f2-ec21-4f0a-9812-53c5a7f8e4d1" />
+
+Use the 'ls' command to display hidden files
+<img width="606" height="124" alt="image" src="https://github.com/user-attachments/assets/d546bacb-dc8d-475c-858c-0cf6896cbe0b" />
+
+Use the command 'mget *' to download all the files we found
+<img width="649" height="338" alt="image" src="https://github.com/user-attachments/assets/151308c6-bc8f-4fb0-aa34-06d27089a3a7" />
+
+
+
+
+
+
+
+
+
 
 
 
