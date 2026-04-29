@@ -1,7 +1,7 @@
 # THMLianYu
 
 ## Overview
-This is the work of Huwaina Yasmin binti Anuar Asfandi, student ID: 52215124317, class: Vulnerability Analysis: L01-B02
+This is the work of Huwaina Yasmin binti Anuar Asfandi, student ID: 52215124317, class: Vulnerability Analysis: L01-B02.
 This lab focuses on reconnaissance, enumeration, and exploitation of a vulnerable machine hosted on TryHackMe. The objective is to identify hidden directories, extract credentials, and escalate privileges to obtain user and capture flags (proof of access).
 
 ---
@@ -31,13 +31,13 @@ Findings:
 ---
 
 ## Step 2: Web Enumeration
-Visit the target IP in a web browser
+Visit the target IP in a web browser.
 ```bash
 http://10.49.170.154
 ```
 <img width="895" height="739" alt="image" src="https://github.com/user-attachments/assets/ca29ae8e-0a3b-4d32-81d8-535a4ef9a1a4" />
 
-Ran gobuster to find hidden directories
+Ran gobuster to find hidden directories.
 ```bash
 gobuster dir -u http://10.49.170.154 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
 ```
@@ -52,7 +52,7 @@ http://10.49.165.124/island/
 <img width="899" height="734" alt="image" src="https://github.com/user-attachments/assets/49641db9-5544-438e-afe7-e2a08e0284f8" />
 
 
-View the page source for more hints
+View the page source for more hints.
 <img width="886" height="479" alt="image" src="https://github.com/user-attachments/assets/e71e54ba-de98-47e0-8b01-836e9d532ab0" />
 
 
@@ -60,7 +60,7 @@ Found the code word 'vigilante' (FTP username).
 <img width="623" height="56" alt="image" src="https://github.com/user-attachments/assets/03eecbdb-0b9c-41be-917c-ccc17d1233b6" />
 
 
-Dig deeper into /island by running gobuster on /island
+Dig deeper into /island by running gobuster on /island.
 ```bash
 gobuster dir -u http://10.49.170.154/island -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
 ```
@@ -80,7 +80,7 @@ Ran gobuster on /2100
 ```bash
 gobuster dir -u http://10.49.165.124/island/2100/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x ticket
 ```
-Found directory: green_arrow.ticket
+Found directory: green_arrow.ticket.
 <img width="932" height="543" alt="image" src="https://github.com/user-attachments/assets/5e1ce35d-5e13-4a61-995a-5578b94874ab" />
 
 ## Step 3: File Discovery
@@ -96,15 +96,15 @@ Visit CyberChef to decode the token
 ```bash
 https://gchq.github.io/CyberChef/
 ```
-Use Code58 to decrypt the token and get '!#th3h00d' which is the FTP password
+Use Code58 to decrypt the token and get '!#th3h00d' which is the FTP password.
 <img width="1919" height="871" alt="image" src="https://github.com/user-attachments/assets/5444c5fd-2a75-4353-82f0-25bb97513607" />
 
 
 > [!NOTE]
-> From this point on, the IP address has changed because I used a vpn in my Kali Linux instead of the AttackBox in TryHackMe
+> From this point on, the IP address has changed because I used a vpn in my Kali Linux instead of the AttackBox in TryHackMe.
 
 ## Step 5: FTP Access
-Log in through ftp using the username and password found earlier
+Log in through ftp using the username and password found earlier.
 ```bash
 ftp 10.48.137.168
 ```
@@ -113,21 +113,21 @@ ftp 10.48.137.168
 Use the 'ls' command to display hidden files
 <img width="606" height="124" alt="image" src="https://github.com/user-attachments/assets/d546bacb-dc8d-475c-858c-0cf6896cbe0b" />
 
-Use the command 'mget *' to download all the files we found
+Use the command 'mget *' to download all the files we found.
 <img width="649" height="338" alt="image" src="https://github.com/user-attachments/assets/151308c6-bc8f-4fb0-aa34-06d27089a3a7" />
 
-The Leave_me_alone.png contains errors and cannot be opened
+The Leave_me_alone.png contains errors and cannot be opened.
 <img width="441" height="154" alt="image" src="https://github.com/user-attachments/assets/2119472e-5fad-4b2d-b132-4d6b2a252439" />
 
 So I exited ftp mode and used the command 'hexeditor' to see the errors.
 <img width="1112" height="625" alt="image" src="https://github.com/user-attachments/assets/bce180cf-b839-4a35-a72e-31b5558c53ae" />
 
-Changed the png header according to the right one
+Changed the png header according to the right one.
 <img width="985" height="546" alt="image" src="https://github.com/user-attachments/assets/964e563f-4bff-426b-86b5-3c385e232d27" />
 <img width="783" height="289" alt="image" src="https://github.com/user-attachments/assets/8512e048-24c5-43c1-895f-36bb17aae64e" />
 > Image source: https://en.wikipedia.org/wiki/PNG
 
-Once the Leave_me_alone.png is opened, we get the password for steghide: password (😂).The password is for steghide because steghide can be used for jpgs
+Once the Leave_me_alone.png is opened, we get the password for steghide: password (😂).The password is for steghide because steghide can be used for jpgs.
 ```bash
 steghide extract -sf aa.jpg
 ```
@@ -137,7 +137,7 @@ Upon using the password, we extracted an 'ss.zip' file. After unzipping, we get 
 <img width="278" height="82" alt="image" src="https://github.com/user-attachments/assets/1c2da41a-d856-4cf6-b9be-c87aea0cad85" />
 <img width="210" height="95" alt="image" src="https://github.com/user-attachments/assets/e58af727-89a1-4b1b-b944-d614f70241a5" />
 
-Now using the 'cat' command on the 'shado' file to display the entire content of the file. We get the password for an SSH file: M3tahuman
+Now using the 'cat' command on the 'shado' file to display the entire content of the file. We get the password for an SSH file: M3tahuman.
 ```bash
 cat shado
 ```
@@ -150,7 +150,7 @@ ssh slade@10.48.137.168
 <img width="655" height="580" alt="image" src="https://github.com/user-attachments/assets/eca437f1-2a67-46eb-b6d8-495129377693" />
 
 Use the command 'ls' to display all files contained...and we get a 'user.txt' file. Use the command 'cat user.txt' to display the contents. 
-We can see the message 'THM{P30P7E_K33P_53CRET5__C0MPUT3R5_D0N'T}'
+We can see the message 'THM{P30P7E_K33P_53CRET5__C0MPUT3R5_D0N'T}'.
 <img width="340" height="95" alt="image" src="https://github.com/user-attachments/assets/e8ef540c-2b85-47c3-b68e-48942b73fee5" />
 
 Use the command ' sudo pkexec su' to access root privileges
