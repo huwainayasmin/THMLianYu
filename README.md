@@ -71,11 +71,24 @@ http://10.49.170.154/island/2100
 View the page source
 <img width="955" height="736" alt="Screenshot 2026-04-29 072145" src="https://github.com/user-attachments/assets/e337d04c-793f-424f-a2ab-bd621197c992" />
 
-Ran gobuster to find .ticket
+Ran gobuster on /2100
 ```bash
 gobuster dir -u http://10.49.165.124/island/2100/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x ticket
 ```
+Found directory: green_arrow.ticket
 <img width="932" height="543" alt="image" src="https://github.com/user-attachments/assets/5e1ce35d-5e13-4a61-995a-5578b94874ab" />
+
+Visit
+```bash
+http://10.49.170.154/island/2100/green_arrow.ticket
+```
+Found a token 'RTy8yhBQdscX'.
+<img width="716" height="267" alt="image" src="https://github.com/user-attachments/assets/cc6f4d5c-bf25-4028-a922-d54769347aaa" />
+
+Visit CyberChef to decode the token
+```bash
+https://gchq.github.io/CyberChef/
+```
 
 
 
